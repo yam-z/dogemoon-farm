@@ -111,6 +111,7 @@ async function checkFarmStatus(){
   }
 }
 
+
 async function approveDogemoon(){
   let maxValue = new BigNumber("115792089237316195423570985008687907853269984665640564039457584007913129639935");
   console.log(Number(maxValue));
@@ -144,6 +145,12 @@ $(document).ready(function async () {
     $("#openFarm_button").click( () => {
         console.log("clicked");
         toggleFarm(); 
+  })});
+
+  $(document).ready(function async () {
+    $("#buy_button").click( () => {
+        console.log("clicked");
+        window.location.href = 'https://dogeswap.org/#/swap?outputCurrency=0x95426e416ba98ba31c1904d7ba46d374ec4b145a';
   })});
 
   $(document).ready(function () {
