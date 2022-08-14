@@ -22,7 +22,7 @@ async function connectDapp(){
 const abi = await $.getJSON("./config/abi.json"); //MAKE SURE IS FARM ABI
 const dogemoonABI = await $.getJSON("./config/dogemoonABI.json");
 
-const CONTRACT_ADDRESS = "0x34a37585Fd7FadbfC987ddbaFD4770E2e8333585";
+const CONTRACT_ADDRESS = "0xA9BEA335c079915d62D56B2e6304AA147ED0310a";
 const DOGEMOON_ADDY = "0x95426E416bA98bA31C1904D7Ba46d374EC4B145A";
 
 const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
