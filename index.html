@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script type="module" src="./scripts/main.js"></script>
+    <script type="module" src="./scripts/bignumber.js"></script>
+    <script src='./scripts/big.js'></script>
+
+    <title>DogeMoon</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="bg">
+      <img src="images/farm.webp">
+    </div>
+    <div style = "position:relative; left:-1200px; top:-10px;"><img src="images/pepo.png"></div></div>
+        <bann><p style="width:160px; text-align:center; margin:0 auto; position:relative; left: -6.5%; top:55px; font-family: HP Simplified light; font-size: 98px;" class="bann">DogeMoon</bann>
+            <p><p style="width:160px; text-align:center; margin:0 auto; position:relative; left:50%px; top:100px; font-family: HP Simplified light; font-size: 24px; white-space: nowrap;" class="text">DogeMoon yield!</p>
+            <p><p style="width:160px; text-align:center; margin:0 auto; position:relative; left: 50%px; top:100px; font-family: HP Simplified light; font-size: 12px; white-space: nowrap;" class="text">Built on Dogechain</p>
+            <div style="width:192px; margin:0 auto;" class="center"><form class="form-inline"></form>
+                <div><p style="width:160px; text-align:center; margin:0 auto; position:relative; left: 0px; top:135px; font-family: HP Simplified light; font-size: 24px; white-space: nowrap;" class="text">Stake DogeMoon!</p></div>
+            <input type="textInput" style = "position:relative; width:200px; text-align:center; left: 0%px; top:150px; font-family: HP Simplified light; font-size: 12px;" class="form-inline" id="stakeAmount" placeholder="amount to stake"></div>
+            <div><button style="width:120px; text-align:center; position:relative; left:47%; top:155px; margin:0 auto;" class="button" id="stake_button">Stake!</button></div>
+        <div><button style="width:120px; text-align:center; position:relative; left:47%; top:155px; margin:0 auto;" class="button" type="button" id="approve_button">Approve Dogemoon</button></div>
+        <p><p style="width:160px; text-align:center; margin:0 auto; position:relative; left: 50%px; top:150px; font-family: HP Simplified bold; font-size: 15px; white-space: normal;" class="text">IMPORTANT!</p>
+        <p><p style="width:160px; text-align:center; margin:0 auto; position:relative; left: 50%px; top:135px; font-family: HP Simplified light; font-size: 15px; white-space: normal;" class="text1">Staked DogeMoon is locked for a MONTH!</p>
+        <p><p style="width:160px; text-align:center; margin:0 auto; position:relative; left: 50%px; top:135px; font-family: HP Simplified light; font-size: 15px; white-space: normal;" class="text1">You must unstake before you are able to stake again!</p>
+        <p><p style="width:160px; text-align:center; margin:0 auto; position:relative; left: 50%px; top:135px; font-family: HP Simplified light; font-size: 15px; white-space: normal;" class="text1">You can only stake when The Farm is OPEN!</p>
+        <p><p style="width:160px; text-align:center; margin:0 auto; position:relative; left: 50%px; top:150px; font-family: HP Simplified light; font-size: 15px; white-space: normal;" id="farmCheck" class="textFarm">Farm Is Open</p>
+        <div><button style="width:120px; text-align:center; position:relative; left:888px; top:200px; margin:0 auto;" class="button" type="button" id="redeem_button">Unstake!</button></div>
+        <div class="container">
+          <p><p style="width:160px; margin:0 auto; text-align:center; position:relative; left: -20px; top:200px; font-family: HP Simplified light; font-size: 16px; white-space: nowrap;" class="text" id="rewards">Your current rewards:</p>
+          <p style="width:160px; margin:0 auto; text-align:center; position:relative; left: -20px; top:220px; font-family: HP Simplified light; font-size: 16px; white-space: nowrap;" class="text" id="userBalance">Your staked DogeMoon:</p>
+          <p style="width:160px; margin:0 auto; text-align:center; position:relative; left: -20px; top:240px; font-family: HP Simplified light; font-size: 16px; white-space: nowrap;" class="text" id="totalDeposits">Total staked DogeMoon:</p>
+        </div>
+        <div><button style="width:120px; text-align:center; position:relative; visibility:hidden; left:888px; top:305px; margin:0 auto;" class="button" type="button" id="openFarm_button">Open Farm</button></div>
+        <script>
+        </script>
+        <div><button style="width:120px; position:relative; left:904px; top:310px; margin:0 auto;" class="button" type="button" id="connect_button">Connect Wallet</button></div>
+    <p></p>
+    <div class="container">
+    </div>
+    <audio controls loop autoplay="true" id="bgmusic" style="width:120px; position:relative; left:888px; top:310px; margin:0 auto;">
+      <source src="./LateNightRadio.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+      var audio = document.getElementById("bgmusic");
+      audio.volume = 0.1;
+    </script>
+  </body>
+</html>
