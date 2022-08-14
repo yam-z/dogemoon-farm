@@ -10,7 +10,6 @@ if(typeof window.ethereum !== "undefined"){
 
 const owner = "0x86a30392ab31a851fcfde85d397bd592169ffbd8";
 let account0;
-console.log(owner+" OWNER");
 
 async function connectDapp(){
   await ethereum.request({ method: 'eth_requestAccounts' }).then(function (result) {
@@ -23,7 +22,7 @@ async function connectDapp(){
 const abi = await $.getJSON("./config/abi.json"); //MAKE SURE IS FARM ABI
 const dogemoonABI = await $.getJSON("./config/dogemoonABI.json");
 
-const CONTRACT_ADDRESS = "0xC475b76627Af7e36f8622a3C17DB50c47bdaD635";
+const CONTRACT_ADDRESS = "0x34a37585Fd7FadbfC987ddbaFD4770E2e8333585";
 const DOGEMOON_ADDY = "0x95426E416bA98bA31C1904D7Ba46d374EC4B145A";
 
 const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
@@ -59,7 +58,7 @@ if(owner == ethereum.selectedAddress){
 
 document.getElementById("rewards").innerHTML = "Your current rewards: "+await currentRewards()+"!";
 document.getElementById("userBalance").innerHTML = "Your staked DogeMoon: "+await userBalance()+"!";
-document.getElementById("totalDeposits").innerHTML = "Total staked DogeMoon: "+await userBalance()+"!";
+document.getElementById("totalDeposits").innerHTML = "Total staked DogeMoon: "+await returnTotalStaked()+"!";
 }
 
 
@@ -70,10 +69,28 @@ async function stake(amount){
     }))
 }
 
+async function unstake(amount){
+  await contract.methods.unstakeDogeMoon().send({from: ethereum.selectedAddress}).on("receipt", ( () => {
+      console.log("done");
+  }))
+}
+
 async function openFarm(){
   await contract.methods.openFarm().send({from: ethereum.selectedAddress}).on("receipt", ( () => {
       console.log("done");
   }))
+}
+
+async function setTimeLock(){
+  await DogeMoonContract.methods.setLockTime(1).send({from: ethereum.selectedAddress}).on("receipt", ( () => {
+    console.log("done");
+  }));
+}
+
+async function returnTotalStaked(){
+  let totalStaked = new BigNumber(await contract.methods.returnTotalStaked().call({from: ethereum.selectedAddress}));
+  return totalStaked.toFixed()/(10**18);
+  
 }
 
 async function currentRewards(){
@@ -145,6 +162,12 @@ $(document).ready(function async () {
     $("#openFarm_button").click( () => {
         console.log("clicked");
         toggleFarm(); 
+  })});
+
+  $(document).ready(function async () {
+    $("#unstake_button").click( () => {
+        console.log("clicked");
+        unstake(); 
   })});
 
   $(document).ready(function async () {
