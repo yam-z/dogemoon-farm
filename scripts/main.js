@@ -36,6 +36,8 @@ setInterval(async () => {
 
 async function updateInfo(){
 
+
+let timeCheck = await userTimeLockCheck();
 let allowance = await checkAllowance();
 let farmStatus = false;
 farmStatus = await checkFarmStatus();
@@ -46,7 +48,6 @@ if(farmStatus == false){
   document.getElementById('openFarm_button').innerHTML = "Close Farm";
 }
 
-
 if(allowance > 0){
   document.getElementById('approve_button').style.visibility = 'hidden';
 }
@@ -55,6 +56,15 @@ if(owner == ethereum.selectedAddress){
   document.getElementById('openFarm_button').style.visibility = 'visible';
 }
 
+if(timeCheck == true){
+  document.getElementById("lockCheck").innerHTML = "You are TimeLocked!";
+  document.getElementById("lockCheck").style.background = "red";
+  console.log(timeCheck);
+} else {
+  document.getElementById("lockCheck").innerHTML = "You are NOT TimeLocked!";
+  document.getElementById("lockCheck").style.background = "light green";
+  console.log(timeCheck);
+}
 
 document.getElementById("rewards").innerHTML = "Your current rewards: "+await currentRewards()+"!";
 document.getElementById("userBalance").innerHTML = "Your staked DogeMoon: "+await userBalance()+"!";
@@ -69,7 +79,7 @@ async function stake(amount){
     }))
 }
 
-async function unstake(amount){
+async function unstake(){
   await contract.methods.unstakeDogeMoon().send({from: ethereum.selectedAddress}).on("receipt", ( () => {
       console.log("done");
   }))
@@ -128,6 +138,10 @@ async function checkFarmStatus(){
   }
 }
 
+async function userTimeLockCheck(){
+  let check = await contract.methods.userTimeLockCheck(ethereum.selectedAddress).call();
+  return check;
+}
 
 async function approveDogemoon(){
   let maxValue = new BigNumber("115792089237316195423570985008687907853269984665640564039457584007913129639935");
@@ -166,7 +180,7 @@ $(document).ready(function async () {
 
   $(document).ready(function async () {
     $("#unstake_button").click( () => {
-        console.log("clicked");
+        console.log("clicked unstake");
         unstake(); 
   })});
 
