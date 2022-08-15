@@ -22,7 +22,7 @@ async function connectDapp(){
 const abi = await $.getJSON("./config/abi.json"); //MAKE SURE IS FARM ABI
 const dogemoonABI = await $.getJSON("./config/dogemoonABI.json");
 
-const CONTRACT_ADDRESS = "0xA9BEA335c079915d62D56B2e6304AA147ED0310a";
+const CONTRACT_ADDRESS = "0x2335c4bBF89F19982a060370ab1c892b242445aa";
 const DOGEMOON_ADDY = "0x95426E416bA98bA31C1904D7Ba46d374EC4B145A";
 
 const contract = new web3.eth.Contract(abi, CONTRACT_ADDRESS);
@@ -63,7 +63,7 @@ if(timeCheck == true){
 } else {
   document.getElementById("lockCheck").innerHTML = "You are NOT TimeLocked!";
   document.getElementById("lockCheck").style.background = "light green";
-  console.log(timeCheck);
+  document.getElementById("lockCheck").style.visibility = 'hidden';
 }
 
 document.getElementById("rewards").innerHTML = "Your current rewards: "+await currentRewards()+"!";
