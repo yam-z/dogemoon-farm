@@ -66,9 +66,9 @@ if(timeCheck == true){
   document.getElementById("lockCheck").style.visibility = 'hidden';
 }
 
-document.getElementById("rewards").innerHTML = "Your current rewards: "+await currentRewards()+"!";
-document.getElementById("userBalance").innerHTML = "Your staked DogeMoon: "+await userBalance()+"!";
-document.getElementById("totalDeposits").innerHTML = "Total staked DogeMoon: "+await returnTotalStaked()+"!";
+document.getElementById("rewards").innerHTML = "Your current rewards: "+await currentRewards()+" DogeMoon!";
+document.getElementById("userBalance").innerHTML = "Your staked DogeMoon: "+await userBalance()+" DogeMoon!";
+document.getElementById("totalDeposits").innerHTML = "Total staked DogeMoon: "+await returnTotalStaked()+" DogeMoon!";
 }
 
 
